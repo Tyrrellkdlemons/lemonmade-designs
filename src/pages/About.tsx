@@ -21,6 +21,7 @@ export default function About() {
         <SectionHeading
           eyebrow="About us"
           title="The Lemons Behind LemonMade."
+          headingLevel="h1"
         />
         <ScrollReveal>
           <img
@@ -51,7 +52,7 @@ export default function About() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6" aria-labelledby="our-values">
-        <SectionHeading eyebrow="What we stand for" title="Made With Care. Every Time." />
+        <SectionHeading id="our-values" eyebrow="What we stand for" title="Made With Care. Every Time." />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {values.map((v, i) => (
             <ScrollReveal key={v.title} delay={i * 0.08}>

@@ -16,6 +16,7 @@ export default function Services() {
           eyebrow="Services"
           title="Everything Your Website Needs."
           subtitle="From the first idea to years of growth — we create, launch, connect, transfer, redesign, and manage."
+          headingLevel="h1"
         />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {services.map((s, i) => (

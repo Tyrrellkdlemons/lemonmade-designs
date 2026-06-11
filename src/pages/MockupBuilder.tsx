@@ -13,6 +13,7 @@ export default function MockupBuilder() {
         eyebrow="Mockup builder"
         title="Design Your Dream Site in 2 Minutes."
         subtitle="Pick your pages, style, and features. We'll turn your answers into a real mockup concept — free, no commitment."
+        headingLevel="h1"
       />
       <MockupBuilderForm />
     </section>

@@ -19,6 +19,7 @@ export default function Pricing() {
           eyebrow="Pricing"
           title="Simple Packages. Custom Quotes."
           subtitle="Start with a package that fits — we'll tailor the final quote to exactly what you need."
+          headingLevel="h1"
         />
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {pricingTiers.map((t, i) => (
@@ -32,7 +33,7 @@ export default function Pricing() {
         </ScrollReveal>
       </section>
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6" aria-labelledby="pricing-faq">
-        <SectionHeading eyebrow="FAQ" title="Good Questions. Honest Answers." />
+        <SectionHeading id="pricing-faq" eyebrow="FAQ" title="Good Questions. Honest Answers." />
         <FAQAccordion items={faqs} />
       </section>
       <CTASection />

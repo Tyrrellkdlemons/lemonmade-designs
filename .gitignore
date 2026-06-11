@@ -3,6 +3,7 @@ dist/
 .netlify/
 .superpowers/
 *.log
+*.pid
 .env
 .env.*
 .DS_Store

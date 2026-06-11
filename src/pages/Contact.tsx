@@ -22,6 +22,7 @@ export default function Contact() {
         eyebrow="Start your project"
         title="Tell Us Your Idea."
         subtitle="Fill this out and we'll reply with a clear plan, honest pricing, and a fresh direction — usually within one business day."
+        headingLevel="h1"
       />
       <ScrollReveal>
         <div className="mb-10 flex flex-wrap justify-center gap-3">

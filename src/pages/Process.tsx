@@ -15,6 +15,7 @@ export default function Process() {
           eyebrow="Our process"
           title="From Lemon Idea to Live Website."
           subtitle="Seven clear steps. You always know where your project stands — and you see the design before we build."
+          headingLevel="h1"
         />
         <ProcessTimeline />
       </section>

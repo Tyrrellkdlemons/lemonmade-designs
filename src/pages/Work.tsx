@@ -20,6 +20,7 @@ export default function Work() {
           eyebrow="Our work"
           title="Pick a Style. We Make It Real."
           subtitle="Live previews of real projects. Toggle device sizes, explore, and request one like it."
+          headingLevel="h1"
         />
         <div role="group" aria-label="Filter projects by category" className="mb-10 flex flex-wrap justify-center gap-2">
           {projectCategories.map((c) => (

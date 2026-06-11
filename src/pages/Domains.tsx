@@ -33,6 +33,7 @@ export default function Domains() {
           eyebrow="Domains"
           title="Your Name. Your Domain. Handled."
           subtitle="We help customers find, purchase, connect, and manage domains — all the technical setup included."
+          headingLevel="h1"
         />
         <ScrollReveal>
           <DomainHelpPanel />
@@ -40,7 +41,7 @@ export default function Domains() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6" aria-labelledby="domain-services">
-        <SectionHeading eyebrow="What we handle" title="Every Domain Task, Covered." />
+        <SectionHeading id="domain-services" eyebrow="What we handle" title="Every Domain Task, Covered." />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {domainServices.map((s, i) => (
             <ScrollReveal key={s.title} delay={(i % 3) * 0.08}>
@@ -56,6 +57,7 @@ export default function Domains() {
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6" aria-labelledby="domain-education">
         <SectionHeading
+          id="domain-education"
           eyebrow="Plain-English answers"
           title="New to Domains? Start Here."
           subtitle="No jargon, no pressure — just the basics every website owner should know."
