@@ -24,9 +24,15 @@ export default function About() {
         />
         <ScrollReveal>
           <img
-            src="/logo/lemonmade-logo-md.png"
-            alt="LemonMade Designs logo"
-            className="mx-auto mb-10 h-28 w-auto drop-shadow-[0_0_30px_rgba(255,210,26,0.3)] sm:h-36"
+            src="/logo/lemonmade-logo-full.jpg"
+            srcSet="/logo/lemonmade-logo-md.jpg 900w, /logo/lemonmade-logo-full.jpg 1200w"
+            sizes="(min-width: 768px) 720px, 92vw"
+            alt="LemonMade Designs: two lemon characters building a website, with the tagline Websites Made Fresh"
+            width="1200"
+            height="800"
+            loading="lazy"
+            decoding="async"
+            className="brand-artwork mx-auto mb-10 w-full max-w-3xl"
           />
           <div className="space-y-5 text-left text-lg leading-relaxed text-cream/80 sm:text-center">
             <p>

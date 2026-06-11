@@ -49,6 +49,13 @@ body {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lemon focus-visible:ring-offset-2 focus-visible:ring-offset-navy;
 }
 
+.brand-artwork {
+  border-radius: 2rem;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.3);
+  -webkit-mask-image: radial-gradient(ellipse 82% 78% at center, #000 68%, transparent 100%);
+  mask-image: radial-gradient(ellipse 82% 78% at center, #000 68%, transparent 100%);
+}
+
 /* Reduced motion: soften everything */
 @media (prefers-reduced-motion: reduce) {
   *,

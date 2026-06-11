@@ -33,7 +33,7 @@ if exist "netlify.toml" (
 ) else (
     echo   PROBLEM: netlify.toml missing!
 )
-if exist "dist\logo\lemonmade-logo-md.png" (
+if exist "dist\logo\lemonmade-logo-md.jpg" (
     echo   OK: logo assets copied to dist.
 ) else (
     echo   PROBLEM: logo assets missing from dist!

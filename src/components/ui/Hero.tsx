@@ -1,6 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
 import Button from "./Button";
-import AnimatedLemonCodeBadge from "../animations/AnimatedLemonCodeBadge";
 import FloatingLemons from "../animations/FloatingLemons";
 
 export default function Hero() {
@@ -16,13 +15,12 @@ export default function Hero() {
       <FloatingLemons />
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pb-20 pt-12 sm:px-6 lg:grid-cols-2 lg:pb-28 lg:pt-20">
         <div className="text-center lg:text-left">
-          <motion.img
+          <motion.p
             {...fadeUp(0)}
-            src="/logo/lemonmade-logo-md.png"
-            alt=""
-            aria-hidden="true"
-            className="mx-auto mb-8 h-24 w-auto drop-shadow-[0_0_30px_rgba(255,210,26,0.35)] sm:h-32 lg:mx-0"
-          />
+            className="mb-5 text-sm font-bold uppercase tracking-[0.22em] text-electric-soft"
+          >
+            Father-and-son website design
+          </motion.p>
           <motion.h1 {...fadeUp(0.12)} className="font-display text-5xl font-bold leading-[1.05] text-cream sm:text-6xl lg:text-7xl">
             Websites Made <span className="text-gradient-lemon relative inline-block">
               Fresh.
@@ -64,8 +62,20 @@ export default function Hero() {
           initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
+          className="relative"
         >
-          <AnimatedLemonCodeBadge />
+          <div className="absolute inset-8 rounded-full bg-lemon/15 blur-3xl" aria-hidden="true" />
+          <img
+            src="/logo/lemonmade-logo-full.jpg"
+            srcSet="/logo/lemonmade-logo-md.jpg 900w, /logo/lemonmade-logo-full.jpg 1200w"
+            sizes="(min-width: 1024px) 50vw, 92vw"
+            alt="LemonMade Designs: two lemon characters building a website, with the tagline Websites Made Fresh"
+            width="1200"
+            height="800"
+            fetchPriority="high"
+            decoding="async"
+            className="brand-artwork relative mx-auto w-full max-w-2xl"
+          />
         </motion.div>
       </div>
     </section>

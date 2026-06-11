@@ -16,7 +16,7 @@
 - Create `tests/brand-assets.test.mjs`: brand source, derivative, and reference contract.
 - Modify `package.json`: expose the Node test command.
 - Replace files in `public/logo/`: optimized full logo, compact mark, and favicons.
-- Replace `public/og/og-image.png`: new social preview.
+- Replace `public/og/og-image.jpg`: new social preview.
 - Modify `src/components/ui/LogoMark.tsx`: render compact or full brand variants.
 - Modify `src/components/layout/Navbar.tsx`: readable compact navigation brand.
 - Modify `src/components/layout/Footer.tsx`: use the new full brand treatment.

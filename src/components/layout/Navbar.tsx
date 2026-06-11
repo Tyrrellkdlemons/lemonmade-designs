@@ -36,7 +36,7 @@ export default function Navbar() {
       }`}
     >
       <nav aria-label="Main navigation" className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
-        <LogoMark imgClassName="h-10 sm:h-12" />
+        <LogoMark imgClassName="h-11 w-11 sm:h-12 sm:w-12" />
         <ul className="hidden items-center gap-1 lg:flex">
           {links.map((l) => (
             <li key={l.to}>
