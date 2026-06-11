@@ -18,12 +18,12 @@ export default function LogoMark({
       aria-label="LemonMade Designs home"
     >
       <img
-        src="/logo/lemonmade-logo-mark.jpg"
+        src="/logo/lemonmade-logo-mark.png"
         alt=""
         width="512"
         height="512"
         decoding="async"
-        className={`${imgClassName} rounded-xl object-cover shadow-[0_0_22px_rgba(255,210,26,0.2)]`}
+        className={`${imgClassName} object-contain drop-shadow-[0_0_14px_rgba(255,210,26,0.35)]`}
       />
       {showText && (
         <span className="leading-none">

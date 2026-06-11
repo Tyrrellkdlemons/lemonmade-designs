@@ -8,12 +8,12 @@ const expectedSourceHash =
 
 const assets = [
   ["brand/source/lemonmade-logo-original.png", 1536, 1024],
-  ["public/logo/lemonmade-logo-full.jpg", 1200, 800],
-  ["public/logo/lemonmade-logo-md.jpg", 900, 600],
-  ["public/logo/lemonmade-logo-mark.jpg", 512, 512],
+  ["public/logo/lemonmade-logo-full.png", 1200, 762],
+  ["public/logo/lemonmade-logo-720.png", 720, 457],
+  ["public/logo/lemonmade-logo-mark.png", 512, 512],
   ["public/logo/favicon-192.png", 192, 192],
   ["public/logo/favicon-64.png", 64, 64],
-  ["public/og/og-image.jpg", 1200, 630],
+  ["public/og/og-card.png", 1200, 630],
 ];
 
 function imageDimensions(path) {
@@ -73,9 +73,9 @@ test("site references the new full logo, compact mark, and social image", () => 
   const about = readFileSync("src/pages/About.tsx", "utf8");
   const html = readFileSync("index.html", "utf8");
 
-  assert.match(logoMark, /lemonmade-logo-mark\.jpg/);
-  assert.match(hero, /lemonmade-logo-full\.jpg/);
-  assert.match(about, /lemonmade-logo-full\.jpg/);
-  assert.match(html, /\/og\/og-image\.jpg/);
+  assert.match(logoMark, /lemonmade-logo-mark\.png/);
+  assert.match(hero, /lemonmade-logo-full\.png/);
+  assert.match(about, /lemonmade-logo-full\.png/);
+  assert.match(html, /\/og\/og-card\.png/);
   assert.match(html, /\/logo\/favicon-64\.png/);
 });

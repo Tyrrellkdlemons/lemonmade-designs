@@ -2,6 +2,7 @@ import usePageMeta from "../utils/usePageMeta";
 import SectionHeading from "../components/ui/SectionHeading";
 import ScrollReveal from "../components/animations/ScrollReveal";
 import CTASection from "../components/ui/CTASection";
+import ProcessTimeline from "../components/ui/ProcessTimeline";
 
 const values = [
   { icon: "👨‍👦", title: "Family-built", text: "A father-and-son team. Two generations, one standard: make it excellent." },
@@ -25,15 +26,15 @@ export default function About() {
         />
         <ScrollReveal>
           <img
-            src="/logo/lemonmade-logo-full.jpg"
-            srcSet="/logo/lemonmade-logo-md.jpg 900w, /logo/lemonmade-logo-full.jpg 1200w"
+            src="/logo/lemonmade-logo-full.png"
+            srcSet="/logo/lemonmade-logo-720.png 720w, /logo/lemonmade-logo-full.png 1200w"
             sizes="(min-width: 768px) 720px, 92vw"
             alt="LemonMade Designs: two lemon characters building a website, with the tagline Websites Made Fresh"
             width="1200"
-            height="800"
+            height="762"
             loading="lazy"
             decoding="async"
-            className="brand-artwork mx-auto mb-10 w-full max-w-3xl"
+            className="brand-floating mx-auto mb-10 w-full max-w-2xl"
           />
           <div className="space-y-5 text-left text-lg leading-relaxed text-cream/80 sm:text-center">
             <p>
@@ -64,6 +65,31 @@ export default function About() {
             </ScrollReveal>
           ))}
         </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6">
+        <ScrollReveal>
+          <blockquote className="glass relative overflow-hidden p-10 text-center sm:p-14">
+            <span aria-hidden="true" className="absolute -left-6 -top-6 text-8xl opacity-10">🍋</span>
+            <p className="font-display text-2xl font-semibold leading-relaxed text-cream sm:text-3xl">
+              "Built Custom, Not Cookie-Cutter. Your website should work as good as it looks —
+              and we put our family name on every one we make."
+            </p>
+            <footer className="mt-6 text-sm font-semibold uppercase tracking-widest text-electric-soft">
+              — The Lemons, Father & Son
+            </footer>
+          </blockquote>
+        </ScrollReveal>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6" aria-labelledby="how-we-work">
+        <SectionHeading
+          id="how-we-work"
+          eyebrow="How we work"
+          title="From Lemon Idea to Live Website."
+          subtitle="Seven clear steps — you see the design before we build, and we stay after launch."
+        />
+        <ProcessTimeline />
       </section>
 
       <CTASection

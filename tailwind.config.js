@@ -12,8 +12,8 @@ export default {
         charcoal: { DEFAULT: "#050B13" }
       },
       fontFamily: {
-        display: ["Fraunces", "Georgia", "serif"],
-        body: ["Outfit", "system-ui", "sans-serif"]
+        display: ["Baloo 2", "Fraunces", "Georgia", "serif"],
+        body: ["Plus Jakarta Sans", "Outfit", "system-ui", "sans-serif"]
       },
       boxShadow: {
         glow: "0 0 40px rgba(255, 210, 26, 0.25)",
@@ -43,6 +43,10 @@ export default {
         "grid-move": {
           "0%": { backgroundPosition: "0 0" },
           "100%": { backgroundPosition: "48px 48px" }
+        },
+        "scroll-dot": {
+          "0%, 100%": { transform: "translateY(0)", opacity: "1" },
+          "70%": { transform: "translateY(10px)", opacity: "0.2" }
         }
       },
       animation: {
@@ -52,7 +56,8 @@ export default {
         shine: "shine 2.8s ease-in-out infinite",
         "spin-slow": "spin-slow 24s linear infinite",
         blink: "blink 1s step-end infinite",
-        "grid-move": "grid-move 6s linear infinite"
+        "grid-move": "grid-move 6s linear infinite",
+        "scroll-dot": "scroll-dot 1.8s ease-in-out infinite"
       }
     }
   },

@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import AnimatedBackground from "../animations/AnimatedBackground";
+import CursorGlow from "../animations/CursorGlow";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
@@ -22,6 +23,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         Skip to main content
       </a>
       <AnimatedBackground />
+      <CursorGlow />
       <Navbar />
       <motion.main
         id="main-content"
