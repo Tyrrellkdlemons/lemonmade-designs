@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/logo/favicon-64.png" />
+    <link rel="apple-touch-icon" href="/logo/favicon-192.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#071A33" />
+    <title>LemonMade Designs — Websites Made Fresh</title>
+    <meta name="description" content="LemonMade Designs is a father-and-son web design company building custom websites, domains, launches, redesigns, and managed sites for businesses ready to grow." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="LemonMade Designs — Websites Made Fresh" />
+    <meta property="og:description" content="Custom websites, domain help, redesigns, hosting, and launch support. Built by Lemons. Designed to stand out." />
+    <meta property="og:image" content="/og/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Hidden static forms so Netlify detects them at build time -->
+    <form name="start-project" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" /><input type="email" name="email" />
+      <input type="tel" name="phone" /><input type="text" name="business" />
+      <input type="text" name="projectType" /><input type="text" name="budget" />
+      <input type="text" name="timeline" /><input type="text" name="contactMethod" />
+      <textarea name="message"></textarea><input type="text" name="bot-field" />
+    </form>
+    <form name="mockup-builder" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="businessName" /><input type="text" name="businessType" />
+      <input type="text" name="colors" /><input type="text" name="style" />
+      <input type="text" name="pages" /><input type="text" name="features" />
+      <input type="text" name="inspiration" /><textarea name="description"></textarea>
+      <input type="text" name="budget" /><input type="text" name="timeline" />
+      <input type="text" name="contactName" /><input type="email" name="email" />
+      <input type="tel" name="phone" /><input type="text" name="bot-field" />
+    </form>
+    <form name="domain-help" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" /><input type="email" name="email" />
+      <input type="text" name="domainNeed" /><textarea name="message"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
+  </body>
+</html>

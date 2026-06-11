@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lemonmadedesigns.netlify.app/sitemap.xml
