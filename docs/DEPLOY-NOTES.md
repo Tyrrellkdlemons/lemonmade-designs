@@ -15,6 +15,21 @@ Format:
 
 ---
 
+## 2026-06-11 — feat: finish animated LemonMade launch
+- Finished Claude's visual handoff with a mobile-first hero composition, visible
+  first-screen calls to action, active navigation motion, scroll progress, card
+  sweeps, icon movement, and richer section/CTA animation.
+- Hardened all forms against duplicate submissions, focused the first invalid
+  field for keyboard users, and made contact query-prefills update without a
+  full route change.
+- Replaced the private Purely Gems dashboard URL with its public live site.
+- Preserved transparent brand masters and repaired the asset-generation and
+  deployment scripts so they cannot restore the retired JPEG logo treatment.
+- Added integration setup guidance for form notifications, booking, email,
+  payments, domain lookup, AI assistance, analytics, and uploads.
+- Verify after deploy: mobile hero/scroll cue, all three Netlify Forms, public
+  portfolio links, favicon/social card, and reduced-motion behavior.
+
 ## 2026-06-11 — Brand cutout, fresh fonts, lemon buttons, decongested home
 - New mascot logo cut out with true transparency — no more rectangle behind the
   hero art, navbar mark, or favicon. New files: `lemonmade-logo-full.png`,

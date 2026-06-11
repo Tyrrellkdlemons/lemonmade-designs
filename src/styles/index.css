@@ -64,6 +64,28 @@ textarea {
   @apply bg-white/[0.04] backdrop-blur-md border border-white/10 rounded-2xl;
 }
 
+.motion-surface {
+  position: relative;
+  isolation: isolate;
+}
+
+.motion-surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 20%, rgba(255, 210, 26, 0.1) 48%, rgba(14, 165, 233, 0.08) 56%, transparent 80%);
+  transform: translateX(-115%);
+  transition: transform 0.85s cubic-bezier(0.21, 0.6, 0.35, 1);
+}
+
+.motion-surface:hover::after,
+.motion-surface:focus-within::after {
+  transform: translateX(115%);
+}
+
 .text-gradient-lemon {
   background: linear-gradient(100deg, #ffd21a 20%, #ffe36a 50%, #0ea5e9 110%);
   -webkit-background-clip: text;
@@ -143,6 +165,41 @@ textarea {
   mix-blend-mode: screen;
 }
 
+.cta-orbit {
+  animation: orbit-drift 18s linear infinite;
+}
+
+.cta-orbit::before,
+.cta-orbit::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+}
+
+.cta-orbit::before {
+  left: 8%;
+  top: 18%;
+  width: 12px;
+  height: 12px;
+  background: #ffd21a;
+  box-shadow: 0 0 20px rgba(255, 210, 26, 0.65);
+}
+
+.cta-orbit::after {
+  bottom: 12%;
+  right: 5%;
+  width: 9px;
+  height: 9px;
+  background: #7ed957;
+  box-shadow: 0 0 18px rgba(126, 217, 87, 0.55);
+}
+
+@keyframes orbit-drift {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
 /* Reduced motion: soften everything */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -155,5 +212,8 @@ textarea {
   }
   .cursor-glow {
     display: none;
+  }
+  .cta-orbit {
+    animation: none;
   }
 }

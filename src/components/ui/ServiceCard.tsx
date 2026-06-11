@@ -11,9 +11,16 @@ export default function ServiceCard({ service, index }: { service: Service; inde
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.5, delay: (index % 4) * 0.08 }}
       whileHover={reduce ? undefined : { y: -6 }}
-      className="glass group flex flex-col p-6 transition-colors hover:border-lemon/40"
+      className="glass motion-surface group flex flex-col p-6 transition-colors hover:border-lemon/40"
     >
-      <span aria-hidden="true" className="mb-4 text-3xl">{service.icon}</span>
+      <motion.span
+        aria-hidden="true"
+        className="mb-4 inline-block origin-bottom-left text-3xl"
+        whileHover={reduce ? undefined : { rotate: [0, -10, 8, 0], scale: 1.16 }}
+        transition={{ duration: 0.5 }}
+      >
+        {service.icon}
+      </motion.span>
       <h3 className="font-display text-lg font-semibold text-cream">{service.title}</h3>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-cream/70">{service.description}</p>
       <Link

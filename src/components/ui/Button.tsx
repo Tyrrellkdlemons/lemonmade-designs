@@ -11,6 +11,7 @@ interface ButtonProps {
   children: ReactNode;
   className?: string;
   ariaLabel?: string;
+  disabled?: boolean;
 }
 
 /**
@@ -49,8 +50,11 @@ export default function Button({
   children,
   className = "",
   ariaLabel,
+  disabled = false,
 }: ButtonProps) {
-  const cls = `${base} ${variants[variant]} ${shine ? "btn-shine" : ""} ${className}`;
+  const cls = `${base} ${variants[variant]} ${shine ? "btn-shine" : ""} ${
+    disabled ? "cursor-not-allowed opacity-60" : ""
+  } ${className}`;
   const inner = (
     <>
       {variant === "primary" && <Leaf />}
@@ -72,7 +76,7 @@ export default function Button({
     );
   }
   return (
-    <button type={type} onClick={onClick} className={cls} aria-label={ariaLabel}>
+    <button type={type} onClick={onClick} className={cls} aria-label={ariaLabel} disabled={disabled}>
       {inner}
     </button>
   );

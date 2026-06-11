@@ -13,8 +13,9 @@ export default function CTASection({
   return (
     <section className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
       <ScrollReveal>
-        <div className="glass relative overflow-hidden p-10 text-center sm:p-14">
+        <div className="glass motion-surface relative overflow-hidden p-10 text-center sm:p-14">
           <div aria-hidden="true" className="absolute -top-20 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-lemon/15 blur-3xl" />
+          <div aria-hidden="true" className="cta-orbit absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-electric/20" />
           <h2 className="font-display text-3xl font-bold text-cream sm:text-4xl">{title}</h2>
           <p className="mx-auto mt-4 max-w-xl text-cream/70">{subtitle}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { motion, useReducedMotion } from "framer-motion";
 import usePageMeta from "../utils/usePageMeta";
 import Hero from "../components/ui/Hero";
 import SectionHeading from "../components/ui/SectionHeading";
@@ -19,6 +20,7 @@ const capabilities = [
 ];
 
 export default function Home() {
+  const reduce = useReducedMotion();
   usePageMeta(
     "Websites Made Fresh",
     "LemonMade Designs builds custom websites, handles domains and hosting, redesigns outdated sites, and manages your online presence. A father-and-son web design company."
@@ -76,16 +78,30 @@ export default function Home() {
         />
         <ScrollReveal>
           <ul className="flex flex-wrap justify-center gap-3">
-            {capabilities.map((c) => (
-              <li key={c.label}>
+            {capabilities.map((c, index) => (
+              <motion.li
+                key={c.label}
+                initial={reduce ? { opacity: 0 } : { opacity: 0, y: 14, scale: 0.96 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.055 }}
+                whileHover={reduce ? undefined : { y: -4, rotate: index % 2 === 0 ? -1 : 1 }}
+              >
                 <Link
                   to={c.to}
-                  className="focus-ring glass inline-flex items-center gap-2.5 !rounded-full px-5 py-3 text-sm font-semibold text-cream/85 transition-all hover:-translate-y-0.5 hover:border-lemon/50 hover:text-lemon"
+                  className="focus-ring glass motion-surface inline-flex items-center gap-2.5 !rounded-full px-5 py-3 text-sm font-semibold text-cream/85 transition-all hover:border-lemon/50 hover:text-lemon"
                 >
-                  <span aria-hidden="true" className="text-lg">{c.icon}</span>
+                  <motion.span
+                    aria-hidden="true"
+                    className="text-lg"
+                    whileHover={reduce ? undefined : { rotate: [0, -12, 12, 0], scale: 1.18 }}
+                    transition={{ duration: 0.45 }}
+                  >
+                    {c.icon}
+                  </motion.span>
                   {c.label}
                 </Link>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </ScrollReveal>

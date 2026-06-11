@@ -16,7 +16,7 @@ export default function ProjectPreviewCard({ project, index }: { project: Projec
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.55, delay: (index % 2) * 0.1 }}
       whileHover={reduce ? undefined : { y: -4 }}
-      className="glass overflow-hidden p-5 transition-colors hover:border-electric/40"
+      className="glass motion-surface overflow-hidden p-5 transition-colors hover:border-electric/40"
     >
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>

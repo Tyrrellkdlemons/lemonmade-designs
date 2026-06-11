@@ -27,7 +27,14 @@ export default function DomainHelpPanel() {
     if (!form.name.trim()) errs.name = "Please tell us your name.";
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) errs.email = "Please enter a valid email address.";
     setErrors(errs);
-    if (Object.keys(errs).length > 0 || form["bot-field"]) return;
+    if (Object.keys(errs).length > 0 || form["bot-field"]) {
+      const errorIds: Record<string, string> = {
+        name: "domain-name",
+        email: "domain-email",
+      };
+      document.getElementById(errorIds[Object.keys(errs)[0]])?.focus();
+      return;
+    }
     setStatus("sending");
     const ok = await submitNetlifyForm("domain-help", {
       ...form,
@@ -95,7 +102,9 @@ export default function DomainHelpPanel() {
               Something went wrong. Please try again or contact us directly.
             </p>
           )}
-          <Button type="submit" shine>{status === "sending" ? "Sending…" : "Request Domain Help"}</Button>
+          <Button type="submit" shine disabled={status === "sending"}>
+            {status === "sending" ? "Sending…" : "Request Domain Help"}
+          </Button>
         </form>
       )}
     </div>

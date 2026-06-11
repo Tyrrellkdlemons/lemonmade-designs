@@ -6,15 +6,29 @@ echo ==========================================
 echo   LemonMade Designs - Deploy Check
 echo ==========================================
 echo.
-echo [1/4] Installing dependencies...
-call npm install
+echo [1/5] Installing locked dependencies...
+call npm ci
 if errorlevel 1 (
     echo npm install FAILED.
     pause
     exit /b 1
 )
 echo.
-echo [2/4] Running build...
+echo [2/5] Running tests and type checks...
+call npm test
+if errorlevel 1 (
+    echo Tests FAILED - fix the errors above.
+    pause
+    exit /b 1
+)
+call npm run lint
+if errorlevel 1 (
+    echo Type checks FAILED - fix the errors above.
+    pause
+    exit /b 1
+)
+echo.
+echo [3/5] Running production build...
 call npm run build
 if errorlevel 1 (
     echo Build FAILED - fix the errors above.
@@ -22,7 +36,7 @@ if errorlevel 1 (
     exit /b 1
 )
 echo.
-echo [3/4] Checking Netlify output folder...
+echo [4/5] Checking Netlify output folder...
 if exist "dist\index.html" (
     echo   OK: dist\index.html exists.
 ) else (
@@ -33,17 +47,23 @@ if exist "netlify.toml" (
 ) else (
     echo   PROBLEM: netlify.toml missing!
 )
-if exist "dist\logo\lemonmade-logo-md.jpg" (
+if exist "dist\logo\lemonmade-logo-full.png" (
     echo   OK: logo assets copied to dist.
 ) else (
     echo   PROBLEM: logo assets missing from dist!
 )
+if exist "dist\__forms.html" (
+    echo   OK: Netlify static forms file exists.
+) else (
+    echo   PROBLEM: dist\__forms.html missing!
+)
 echo.
-echo [4/4] Common issue checklist:
+echo [5/5] Common issue checklist:
 echo   - Netlify build command should be: npm run build
 echo   - Netlify publish directory should be: dist
 echo   - SPA redirect is configured in netlify.toml
-echo   - Forms (start-project, mockup-builder, domain-help) are in index.html
+echo   - Forms (start-project, mockup-builder, domain-help) are in public\__forms.html
+echo   - Every production commit has a matching entry in docs\DEPLOY-NOTES.md
 echo.
 echo Next steps: run scripts\push-only.cmd to commit and push,
 echo or scripts\setup-github-netlify.cmd for first-time setup.

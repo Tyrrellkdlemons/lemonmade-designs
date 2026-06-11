@@ -63,12 +63,12 @@ export const projects: Project[] = [
   },
   {
     title: "Purely Gems LLC",
-    url: "https://app.netlify.com/projects/purelygemsllc/",
+    url: "https://purelygemsllc.netlify.app/",
     category: "Business",
     owner: "LemonMade / TKDL",
     description:
-      "A business e-commerce project. Private dashboard link — shown as a preview card.",
-    embeddable: false,
+      "A polished business e-commerce project with product storytelling and a customer-friendly storefront.",
+    embeddable: true,
   },
   {
     title: "Success Stories Program TKDL",

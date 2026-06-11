@@ -41,12 +41,24 @@ export default function Navbar() {
               <NavLink
                 to={l.to}
                 className={({ isActive }) =>
-                  `focus-ring rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
+                  `focus-ring relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
                     isActive ? "text-lemon" : "text-cream/80 hover:text-cream"
                   }`
                 }
               >
-                {l.label}
+                {({ isActive }) => (
+                  <>
+                    <span className="relative z-10">{l.label}</span>
+                    {isActive && (
+                      <motion.span
+                        layoutId="desktop-nav-active"
+                        aria-hidden="true"
+                        className="absolute inset-x-3 bottom-0 h-0.5 rounded-full bg-gradient-to-r from-lemon to-leaf shadow-[0_0_10px_rgba(255,210,26,0.55)]"
+                        transition={{ type: "spring", stiffness: 420, damping: 32 }}
+                      />
+                    )}
+                  </>
+                )}
               </NavLink>
             </li>
           ))}

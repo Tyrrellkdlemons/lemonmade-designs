@@ -25,6 +25,15 @@ if errorlevel 1 (
     exit /b 1
 )
 echo.
+echo Running type checks...
+call npm run lint
+if errorlevel 1 (
+    echo.
+    echo TYPE CHECKS FAILED - fix before pushing.
+    pause
+    exit /b 1
+)
+echo.
 echo Build and tests succeeded. Current git status:
 echo ------------------------------------------
 git status
@@ -41,8 +50,8 @@ if "!msg!"=="" (
 )
 set /p detail="One-line detail (optional, Enter to skip): "
 
-rem Append entry to docs/DEPLOY-NOTES.md
-for /f "tokens=1-3 delims=/ " %%a in ("%date%") do set today=%%c-%%a-%%b
+rem Append entry to docs/DEPLOY-NOTES.md using a locale-independent date.
+for /f %%i in ('powershell -NoProfile -Command "Get-Date -Format yyyy-MM-dd"') do set today=%%i
 echo.>> docs\DEPLOY-NOTES.md
 echo ## %today% - !msg!>> docs\DEPLOY-NOTES.md
 if not "!detail!"=="" echo - !detail!>> docs\DEPLOY-NOTES.md

@@ -11,10 +11,10 @@ import {
 } from "./mockupOptions";
 
 function CheckboxGroup({
-  legend, options, selected, onToggle,
-}: { legend: string; options: string[]; selected: string[]; onToggle: (v: string) => void }) {
+  id, legend, options, selected, onToggle,
+}: { id: string; legend: string; options: string[]; selected: string[]; onToggle: (v: string) => void }) {
   return (
-    <fieldset>
+    <fieldset id={id} tabIndex={-1}>
       <legend className="mb-2 text-sm font-semibold text-cream/90">{legend}</legend>
       <div className="flex flex-wrap gap-2">
         {options.map((opt) => {
@@ -66,7 +66,16 @@ export default function MockupBuilderForm() {
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) errs.email = "Please enter a valid email address.";
     if (form.pages.length === 0) errs.pages = "Pick at least one page.";
     setErrors(errs);
-    if (Object.keys(errs).length > 0 || honeypot) return;
+    if (Object.keys(errs).length > 0 || honeypot) {
+      const errorIds: Record<string, string> = {
+        businessName: "businessName",
+        contactName: "contactName",
+        email: "mockupEmail",
+        pages: "pages",
+      };
+      document.getElementById(errorIds[Object.keys(errs)[0]])?.focus();
+      return;
+    }
     setSubmitted(true);
     // Keep a local copy so nothing is lost (also ready for future backend integration)
     try {
@@ -139,10 +148,10 @@ export default function MockupBuilderForm() {
         </Field>
       </div>
 
-      <CheckboxGroup legend="Which pages do you need?" options={pageOptions} selected={form.pages} onToggle={(v) => toggle("pages", v)} />
+      <CheckboxGroup id="pages" legend="Which pages do you need?" options={pageOptions} selected={form.pages} onToggle={(v) => toggle("pages", v)} />
       {errors.pages && <p role="alert" className="-mt-4 text-sm text-red-300">{errors.pages}</p>}
 
-      <CheckboxGroup legend="Which features do you want?" options={featureOptions} selected={form.features} onToggle={(v) => toggle("features", v)} />
+      <CheckboxGroup id="features" legend="Which features do you want?" options={featureOptions} selected={form.features} onToggle={(v) => toggle("features", v)} />
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Inspiration from our work (optional)" htmlFor="inspiration">

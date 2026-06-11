@@ -10,7 +10,8 @@ export default function PricingCard({ tier, index }: { tier: PricingTier; index:
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.55, delay: index * 0.1 }}
-      className={`glass relative flex flex-col p-8 ${
+      whileHover={reduce ? undefined : { y: -8, scale: 1.01 }}
+      className={`glass motion-surface relative flex flex-col p-8 ${
         tier.highlighted ? "border-lemon/50 shadow-glow" : ""
       }`}
     >

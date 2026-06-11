@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import AnimatedBackground from "../animations/AnimatedBackground";
 import CursorGlow from "../animations/CursorGlow";
+import ScrollProgress from "../animations/ScrollProgress";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
@@ -22,6 +23,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       >
         Skip to main content
       </a>
+      <ScrollProgress />
       <AnimatedBackground />
       <CursorGlow />
       <Navbar />

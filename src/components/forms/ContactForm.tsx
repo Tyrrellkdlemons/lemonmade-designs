@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { submitNetlifyForm } from "../../utils/netlifyForms";
 import { Field, inputCls } from "./FormField";
@@ -25,8 +25,10 @@ const typeFromQuery: Record<string, string> = {
 
 export default function ContactForm() {
   const [params] = useSearchParams();
-  const preService = params.get("service") || params.get("package") || "";
-  const preType = typeFromQuery[params.get("type") || ""] || "";
+  const queryKey = params.toString();
+  const initialQuery = new URLSearchParams(queryKey);
+  const preService = initialQuery.get("service") || initialQuery.get("package") || "";
+  const preType = typeFromQuery[initialQuery.get("type") || ""] || "";
 
   const [form, setForm] = useState({
     name: "",
@@ -42,6 +44,33 @@ export default function ContactForm() {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const previousPrefill = useRef({ service: preService, projectType: preType });
+
+  useEffect(() => {
+    const query = new URLSearchParams(queryKey);
+    const service = query.get("service") || query.get("package") || "";
+    const projectType = typeFromQuery[query.get("type") || ""] || "";
+    const previous = previousPrefill.current;
+    const previousMessage = previous.service
+      ? `I'm interested in: ${previous.service}\n\n`
+      : "";
+    const nextMessage = service ? `I'm interested in: ${service}\n\n` : "";
+    const previousProjectType = previous.projectType || projectTypes[0];
+    const nextProjectType = projectType || projectTypes[0];
+
+    setForm((current) => {
+      return {
+        ...current,
+        projectType:
+          current.projectType === previousProjectType ? nextProjectType : current.projectType,
+        message:
+          current.message === previousMessage || current.message === ""
+            ? nextMessage
+            : current.message,
+      };
+    });
+    previousPrefill.current = { service, projectType };
+  }, [queryKey]);
 
   const set = (key: string, value: string) => setForm((f) => ({ ...f, [key]: value }));
 
@@ -52,7 +81,11 @@ export default function ContactForm() {
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) errs.email = "Please enter a valid email address.";
     if (!form.message.trim()) errs.message = "Please describe your project so we can help.";
     setErrors(errs);
-    if (Object.keys(errs).length > 0 || form["bot-field"]) return;
+    if (Object.keys(errs).length > 0 || form["bot-field"]) {
+      const firstErrorId = Object.keys(errs)[0];
+      document.getElementById(firstErrorId)?.focus();
+      return;
+    }
 
     setStatus("sending");
     const ok = await submitNetlifyForm("start-project", form);
@@ -124,7 +157,7 @@ export default function ContactForm() {
           Something went wrong sending your request. Please try again, or email us directly.
         </p>
       )}
-      <Button type="submit" shine className="w-full sm:w-auto">
+      <Button type="submit" shine className="w-full sm:w-auto" disabled={status === "sending"}>
         {status === "sending" ? "Sending…" : "Send My Project Request"}
       </Button>
     </form>

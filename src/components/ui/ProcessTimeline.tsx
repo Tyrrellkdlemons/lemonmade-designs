@@ -24,13 +24,15 @@ export default function ProcessTimeline() {
           transition={{ duration: 0.5, delay: i * 0.07 }}
           className="relative mb-8 flex gap-5 pl-0 last:mb-0"
         >
-          <span
+          <motion.span
             aria-hidden="true"
             className="z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-lemon/60 bg-navy-light text-2xl shadow-glow sm:h-16 sm:w-16"
+            whileHover={reduce ? undefined : { rotate: 8, scale: 1.12 }}
+            transition={{ type: "spring", stiffness: 360, damping: 18 }}
           >
             {step.icon}
-          </span>
-          <div className="glass flex-1 p-5">
+          </motion.span>
+          <div className="glass motion-surface flex-1 p-5">
             <p className="text-xs font-bold uppercase tracking-widest text-electric-soft">Step {i + 1}</p>
             <h3 className="mt-1 font-display text-lg font-bold text-cream">{step.title}</h3>
             <p className="mt-1.5 text-sm leading-relaxed text-cream/70">{step.text}</p>
