@@ -11,7 +11,7 @@ export async function submitNetlifyForm(
   data: Record<string, string>
 ): Promise<boolean> {
   try {
-    const res = await fetch("/", {
+    const res = await fetch("/__forms.html", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encodeFormData({ "form-name": formName, ...data }),

@@ -26,28 +26,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-
-    <!-- Hidden static forms so Netlify detects them at build time -->
-    <form name="start-project" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" /><input type="email" name="email" />
-      <input type="tel" name="phone" /><input type="text" name="business" />
-      <input type="text" name="projectType" /><input type="text" name="budget" />
-      <input type="text" name="timeline" /><input type="text" name="contactMethod" />
-      <textarea name="message"></textarea><input type="text" name="bot-field" />
-    </form>
-    <form name="mockup-builder" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="businessName" /><input type="text" name="businessType" />
-      <input type="text" name="colors" /><input type="text" name="style" />
-      <input type="text" name="pages" /><input type="text" name="features" />
-      <input type="text" name="inspiration" /><textarea name="description"></textarea>
-      <input type="text" name="budget" /><input type="text" name="timeline" />
-      <input type="text" name="contactName" /><input type="email" name="email" />
-      <input type="tel" name="phone" /><input type="text" name="bot-field" />
-    </form>
-    <form name="domain-help" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" /><input type="email" name="email" />
-      <input type="text" name="domainNeed" /><textarea name="message"></textarea>
-      <input type="text" name="bot-field" />
-    </form>
   </body>
 </html>

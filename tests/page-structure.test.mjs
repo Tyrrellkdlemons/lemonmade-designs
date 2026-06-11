@@ -41,3 +41,49 @@ test("aria-labelledby sections provide matching heading ids", () => {
     assert.match(source, new RegExp(`id="${id}"`), `${path} must render heading id ${id}`);
   }
 });
+
+test("Netlify statically registers every JavaScript-submitted form", () => {
+  const source = readFileSync("public/__forms.html", "utf8");
+  const submitter = readFileSync("src/utils/netlifyForms.ts", "utf8");
+  const forms = {
+    "start-project": [
+      "name",
+      "email",
+      "phone",
+      "business",
+      "projectType",
+      "budget",
+      "timeline",
+      "contactMethod",
+      "message",
+      "bot-field",
+    ],
+    "mockup-builder": [
+      "businessName",
+      "businessType",
+      "colors",
+      "style",
+      "pages",
+      "features",
+      "inspiration",
+      "description",
+      "budget",
+      "timeline",
+      "contactName",
+      "email",
+      "phone",
+      "bot-field",
+    ],
+    "domain-help": ["name", "email", "domainNeed", "message", "bot-field"],
+  };
+
+  for (const [formName, fields] of Object.entries(forms)) {
+    assert.match(source, new RegExp(`name="${formName}"`));
+    assert.match(source, new RegExp(`name="form-name" value="${formName}"`));
+    for (const field of fields) {
+      assert.match(source, new RegExp(`name="${field}"`), `${formName} must register ${field}`);
+    }
+  }
+
+  assert.match(submitter, /fetch\("\/__forms\.html"/);
+});
