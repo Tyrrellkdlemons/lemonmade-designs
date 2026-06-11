@@ -2,6 +2,10 @@
 
 **Websites Made Fresh.** A father-and-son web design company site — built with React, Vite, TypeScript, Tailwind CSS, and Framer Motion. Netlify-ready.
 
+**Live site:** https://lemonmade-designs.netlify.app
+
+**GitHub:** https://github.com/Tyrrellkdlemons/lemonmade-designs
+
 ## Pages
 
 | Route | Purpose |
@@ -26,8 +30,19 @@ npm run dev        # http://localhost:5173
 ## Build
 
 ```bash
+npm test
+npm run lint
 npm run build      # outputs to dist/
 npm run preview    # preview the production build
+```
+
+## Brand assets
+
+The untouched supplied logo is stored at `brand/source/lemonmade-logo-original.png`.
+Browser-ready JPEG and favicon derivatives are generated with:
+
+```powershell
+.\scripts\generate-brand-assets.ps1
 ```
 
 ## Deploy to Netlify
@@ -40,7 +55,7 @@ npm run preview    # preview the production build
 
 **Option B — Netlify CLI:**
 ```bash
-netlify deploy --build --prod
+npx netlify deploy --build --prod
 ```
 
 ## Windows helper scripts (`scripts/`)
@@ -72,6 +87,6 @@ src/utils/                    netlifyForms, usePageMeta
 - **Forms:** honeypot spam protection + client validation + accessible errors.
 - **No credentials** are stored anywhere in this repo.
 
-## After updating the live-site domain
+## Deferred redesign
 
-Update `public/robots.txt` and `public/sitemap.xml` with your final domain.
+The larger Phase C redesign backlog is documented in `docs/upgrades/phase-c-redesign.md`.
