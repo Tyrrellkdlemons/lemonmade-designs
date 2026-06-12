@@ -17,6 +17,14 @@ export default function IframeFallback({ project }: { project: Project }) {
       />
       {/* gradient + actions overlay */}
       <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 bg-gradient-to-t from-charcoal/95 via-charcoal/70 to-transparent px-4 pb-4 pt-14 text-center">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric-soft">
+            {project.category}
+          </p>
+          <p className="mt-1 font-display text-lg font-bold text-cream">
+            {project.title}
+          </p>
+        </div>
         <p className="text-xs text-cream/75">
           Live preview — this site opens in a new tab (it blocks embedding for security).
         </p>
@@ -30,10 +38,10 @@ export default function IframeFallback({ project }: { project: Project }) {
             Open Live Site ↗
           </a>
           <Link
-            to={`/mockup?inspiration=${encodeURIComponent(project.title)}`}
+            to={`/mockup-builder?inspiration=${encodeURIComponent(project.title)}`}
             className="focus-ring rounded-full border border-electric bg-navy/70 px-5 py-2 text-sm font-semibold text-electric-soft backdrop-blur-sm hover:bg-electric/15"
           >
-            Use This as Inspiration
+            Request Similar Site
           </Link>
         </div>
       </div>

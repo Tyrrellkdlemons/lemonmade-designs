@@ -3,7 +3,10 @@
 ## Working now
 
 - GitHub-connected Netlify production deploys.
-- Three Netlify Forms: `start-project`, `mockup-builder`, and `domain-help`.
+- Seven Netlify Forms covering contact, service, mockup, domain, audit, redesign,
+  and management requests.
+- Public domain registration lookups through the credential-free RDAP Netlify
+  Function.
 - Contact and service links prefill the correct project request.
 - Mockup summaries are generated in the browser and can be submitted.
 - Portfolio filters, device previews, live-site links, and embed fallbacks.
@@ -34,7 +37,7 @@ Never expose them in Vite variables or browser code.
 
 | Upgrade | Service and setup | Suggested variables |
 |---|---|---|
-| Live domain availability | Name.com API account and credentials; proxy `POST /core/v1/domains:search` through a Netlify Function | `NAMECOM_USERNAME`, `NAMECOM_API_TOKEN` |
+| Registrar-confirmed availability and purchasing | Name.com or another approved registrar API account; public RDAP remains the free first check | `NAMECOM_USERNAME`, `NAMECOM_API_TOKEN` |
 | Automatic inquiry replies | Verify the sending domain in Resend and create a restricted sending key | `RESEND_API_KEY`, `CONTACT_FROM_EMAIL` |
 | Deposits or package checkout | Create Stripe products/prices, Checkout Sessions, and a verified webhook for fulfillment | `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` |
 | Appointment booking | A Cal.com event link works for a basic embed; custom booking requires an API v2 key | `CAL_EVENT_URL` or `CAL_API_KEY` |

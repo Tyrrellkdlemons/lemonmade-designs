@@ -10,6 +10,8 @@ import Process from "./pages/Process";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import ServiceRequest from "./pages/ServiceRequest";
+import WebsiteAudit from "./pages/WebsiteAudit";
 
 export default function App() {
   return (
@@ -18,8 +20,12 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/work" element={<Work />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/request/:serviceId" element={<ServiceRequest />} />
+        <Route path="/mockup-builder" element={<MockupBuilder />} />
         <Route path="/mockup" element={<MockupBuilder />} />
+        <Route path="/domain-help" element={<Domains />} />
         <Route path="/domains" element={<Domains />} />
+        <Route path="/website-audit" element={<WebsiteAudit />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/process" element={<Process />} />
         <Route path="/about" element={<About />} />

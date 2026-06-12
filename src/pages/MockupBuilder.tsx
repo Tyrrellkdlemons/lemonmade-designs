@@ -8,7 +8,7 @@ export default function MockupBuilder() {
     "Use the LemonMade mockup builder to describe your dream website — pick pages, features, style, and colors, and we'll create a fresh design concept."
   );
   return (
-    <section className="mx-auto max-w-4xl px-4 py-14 sm:px-6">
+    <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
       <SectionHeading
         eyebrow="Mockup builder"
         title="Design Your Dream Site in 2 Minutes."

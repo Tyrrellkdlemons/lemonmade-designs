@@ -15,6 +15,22 @@ Format:
 
 ---
 
+## 2026-06-12 — feat: launch free service request platform
+- Preserved Claude's real portfolio preview release on the remote
+  `checkpoint/claude-ebf2fd5` branch before beginning this platform work.
+- Turned all 20 service cards into working request, example, and quick-mockup
+  entry points backed by a typed service catalog.
+- Added dynamic `/request/:serviceId` pages with shared contact fields,
+  service-specific conditional questions, accessible validation, and dedicated
+  redesign/management form routing.
+- Added canonical `/mockup-builder`, `/domain-help`, and `/website-audit`
+  workflows while retaining the previous `/mockup` and `/domains` aliases.
+- Added a credential-free RDAP Netlify Function, live animated mockup preview,
+  client-side audit checklist, and all seven static Netlify Form declarations.
+- Verify after deploy: all seven forms are registered, RDAP returns public data,
+  every service ID resolves, mobile cards/forms do not overflow, and portfolio
+  preview fallbacks still use Claude's saved screenshots.
+
 ## 2026-06-11 — Real previews on every Our Work card
 - Verified all 10 portfolio sites' embedding headers. 5 allow live iframes
   (Indulging Treats, PacificSide, Justice Education, Safe Haven, Mable's Home);

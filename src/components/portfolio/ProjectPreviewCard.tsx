@@ -39,10 +39,10 @@ export default function ProjectPreviewCard({ project, index }: { project: Projec
           Open Live Site ↗
         </a>
         <Link
-          to={`/mockup?inspiration=${encodeURIComponent(project.title)}`}
+          to={`/mockup-builder?inspiration=${encodeURIComponent(project.title)}`}
           className="focus-ring rounded-full bg-lemon/10 px-4 py-2 text-sm font-semibold text-lemon hover:bg-lemon/20"
         >
-          Request one like this
+          Request Similar Site
         </Link>
       </div>
     </motion.article>

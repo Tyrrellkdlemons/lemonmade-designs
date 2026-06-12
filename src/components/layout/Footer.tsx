@@ -15,8 +15,8 @@ const cols = [
     title: "Services",
     links: [
       { to: "/services", label: "All Services" },
-      { to: "/mockup", label: "Build a Mockup" },
-      { to: "/domains", label: "Domain Help" },
+      { to: "/mockup-builder", label: "Build a Mockup" },
+      { to: "/domain-help", label: "Domain Help" },
       { to: "/contact", label: "Request a Redesign" },
     ],
   },
@@ -27,6 +27,7 @@ const cols = [
       { to: "/contact?type=transfer", label: "Transfer My Website" },
       { to: "/contact?type=manage", label: "Manage My Website" },
       { to: "/contact?type=domain", label: "Connect My Domain" },
+      { to: "/website-audit", label: "Free Website Audit" },
     ],
   },
 ];

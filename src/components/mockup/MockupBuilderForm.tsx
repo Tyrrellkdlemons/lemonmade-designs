@@ -1,9 +1,11 @@
 import { FormEvent, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { projects } from "../../data/projects";
+import { getServiceById } from "../../data/services";
 import { submitNetlifyForm } from "../../utils/netlifyForms";
 import { Field, inputCls } from "../forms/FormField";
 import Button from "../ui/Button";
+import MockupLivePreview from "./MockupLivePreview";
 import MockupSummaryCard from "./MockupSummaryCard";
 import {
   budgetOptions, businessTypes, emptyMockup, featureOptions,
@@ -39,9 +41,11 @@ function CheckboxGroup({
 
 export default function MockupBuilderForm() {
   const [params] = useSearchParams();
+  const selectedService = getServiceById(params.get("service") || undefined);
   const [form, setForm] = useState<MockupRequest>({
     ...emptyMockup,
     inspiration: params.get("inspiration") || "",
+    description: selectedService ? `Service direction: ${selectedService.title}\n\n` : "",
   });
   const [honeypot, setHoneypot] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -108,24 +112,29 @@ export default function MockupBuilderForm() {
 
   if (submitted) {
     return (
-      <div className="space-y-6">
-        <MockupSummaryCard request={form} sent={sent} onSend={send} sending={sending} />
-        <button
-          type="button"
-          onClick={() => setSubmitted(false)}
-          className="focus-ring rounded-full text-sm font-medium text-electric-soft hover:text-electric"
-        >
-          ← Edit my request
-        </button>
+      <div className="grid gap-7 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+        <div className="space-y-6">
+          <MockupSummaryCard request={form} sent={sent} onSend={send} sending={sending} />
+          <button
+            type="button"
+            onClick={() => setSubmitted(false)}
+            className="focus-ring rounded-full text-sm font-medium text-electric-soft hover:text-electric"
+          >
+            ← Edit my request
+          </button>
+        </div>
+        <MockupLivePreview request={form} />
       </div>
     );
   }
 
   return (
-    <form name="mockup-builder" onSubmit={handleSubmit} noValidate className="glass space-y-7 p-6 sm:p-8">
+    <div className="grid gap-7 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+    <form name="mockup-builder" method="POST" data-netlify="true" onSubmit={handleSubmit} noValidate className="glass space-y-7 p-6 sm:p-8">
+      <input type="hidden" name="form-name" value="mockup-builder" />
       <p hidden aria-hidden="true">
         <label>
-          Don't fill this out: <input value={honeypot} onChange={(e) => setHoneypot(e.target.value)} tabIndex={-1} autoComplete="off" />
+          Don't fill this out: <input name="bot-field" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} tabIndex={-1} autoComplete="off" />
         </label>
       </p>
 
@@ -190,5 +199,7 @@ export default function MockupBuilderForm() {
 
       <Button type="submit" shine className="w-full sm:w-auto">Build My Mockup Summary</Button>
     </form>
+    <MockupLivePreview request={form} />
+    </div>
   );
 }

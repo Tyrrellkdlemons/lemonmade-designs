@@ -72,9 +72,9 @@ export default function MockupSummaryCard({ request, sent, onSend, sending }: Pr
             ✓ Request sent! We'll email your mockup concept soon.
           </p>
         ) : (
-          <Button onClick={onSend} shine disabled={sending}>{sending ? "Sending…" : "Send Request"}</Button>
+          <Button onClick={onSend} shine disabled={sending}>{sending ? "Sending…" : "Submit Mockup Request"}</Button>
         )}
-        <Button onClick={copy} variant="ghost">{copied ? "✓ Copied!" : "Copy My Request"}</Button>
+        <Button onClick={copy} variant="ghost">{copied ? "✓ Copied!" : "Copy My Mockup Request"}</Button>
       </div>
     </motion.div>
   );

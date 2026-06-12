@@ -62,7 +62,8 @@ echo [5/5] Common issue checklist:
 echo   - Netlify build command should be: npm run build
 echo   - Netlify publish directory should be: dist
 echo   - SPA redirect is configured in netlify.toml
-echo   - Forms (start-project, mockup-builder, domain-help) are in public\__forms.html
+echo   - Seven production forms are registered in public\__forms.html
+echo   - RDAP domain helper exists in netlify\functions\rdap-domain.mjs
 echo   - Every production commit has a matching entry in docs\DEPLOY-NOTES.md
 echo.
 echo Next steps: run scripts\push-only.cmd to commit and push,
