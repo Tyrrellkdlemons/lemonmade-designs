@@ -15,6 +15,20 @@ Format:
 
 ---
 
+## 2026-06-11 — Real previews on every Our Work card
+- Verified all 10 portfolio sites' embedding headers. 5 allow live iframes
+  (Indulging Treats, PacificSide, Justice Education, Safe Haven, Mable's Home);
+  5 block embedding via X-Frame-Options/CSP (OTM Workshops, LoveRebel, Erebus TK,
+  Purely Gems, Success Stories) — flags corrected to match reality.
+- Captured real screenshots of all 10 live sites (public/images/previews/).
+  Blocked sites now show their actual screenshot with "Open Live Site" overlay
+  instead of a generic skeleton; embeddable sites use the screenshot as the
+  loading placeholder behind the iframe.
+- Optional next step: the blocked Netlify sites are our own projects — adding
+  `frame-ancestors https://lemonmade-designs.netlify.app` to their headers would
+  enable true live embeds.
+
+
 ## 2026-06-11 — feat: finish animated LemonMade launch
 - Finished Claude's visual handoff with a mobile-first hero composition, visible
   first-screen calls to action, active navigation motion, scroll progress, card

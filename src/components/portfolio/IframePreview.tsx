@@ -56,8 +56,17 @@ export default function IframePreview({ project, device }: Props) {
       ) : (
         <>
           {!loaded && (
-            <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
-              <span className="animate-glow-pulse text-3xl">🍋</span>
+            <div className="absolute inset-0" aria-hidden="true">
+              <img
+                src={project.screenshot}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover object-top opacity-60"
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-charcoal/30">
+                <span className="animate-glow-pulse text-3xl">🍋</span>
+              </div>
             </div>
           )}
           {inView && (

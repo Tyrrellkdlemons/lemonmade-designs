@@ -5,6 +5,8 @@ export interface Project {
   owner: string;
   description: string;
   embeddable: boolean;
+  /** Real screenshot of the live site, shown while loading and when embedding is blocked. */
+  screenshot: string;
 }
 
 export const projectCategories = [
@@ -26,7 +28,8 @@ export const projects: Project[] = [
     owner: "Dad / OTM Workshops",
     description:
       "A portfolio-style site example showing creative workshop and website presentation work.",
-    embeddable: true,
+    embeddable: false,
+    screenshot: "/images/previews/otm-workshops.jpg",
   },
   {
     title: "Indulging Treats",
@@ -36,6 +39,7 @@ export const projects: Project[] = [
     description:
       "A dessert brand website with visual flavor, ordering energy, and brand-forward design.",
     embeddable: true,
+    screenshot: "/images/previews/indulging-treats.jpg",
   },
   {
     title: "PacificSide Insurance",
@@ -44,6 +48,7 @@ export const projects: Project[] = [
     owner: "LemonMade / TKDL",
     description: "A professional business website example for insurance services.",
     embeddable: true,
+    screenshot: "/images/previews/pacificside-insurance.jpg",
   },
   {
     title: "LoveRebel",
@@ -51,7 +56,8 @@ export const projects: Project[] = [
     category: "Custom Brand",
     owner: "LemonMade / TKDL",
     description: "A bold custom brand website with personality and visual identity.",
-    embeddable: true,
+    embeddable: false,
+    screenshot: "/images/previews/loverebel.jpg",
   },
   {
     title: "Erebus TK",
@@ -59,7 +65,8 @@ export const projects: Project[] = [
     category: "Custom Brand",
     owner: "LemonMade / TKDL",
     description: "A custom themed web project example with strong visual direction.",
-    embeddable: true,
+    embeddable: false,
+    screenshot: "/images/previews/erebus-tk.jpg",
   },
   {
     title: "Purely Gems LLC",
@@ -68,7 +75,8 @@ export const projects: Project[] = [
     owner: "LemonMade / TKDL",
     description:
       "A polished business e-commerce project with product storytelling and a customer-friendly storefront.",
-    embeddable: true,
+    embeddable: false,
+    screenshot: "/images/previews/purely-gems.jpg",
   },
   {
     title: "Success Stories Program TKDL",
@@ -77,7 +85,8 @@ export const projects: Project[] = [
     owner: "LemonMade / TKDL",
     description:
       "A program-focused site example built for storytelling and credibility.",
-    embeddable: true,
+    embeddable: false,
+    screenshot: "/images/previews/success-stories.jpg",
   },
   {
     title: "Justice Education",
@@ -86,7 +95,8 @@ export const projects: Project[] = [
     owner: "Reference / Inspiration",
     description:
       "An education-focused reference site for structure, credibility, and institutional presentation.",
-    embeddable: false,
+    embeddable: true,
+    screenshot: "/images/previews/justice-education.jpg",
   },
   {
     title: "Safe Haven for Empowerment",
@@ -95,7 +105,8 @@ export const projects: Project[] = [
     owner: "Reference / Inspiration",
     description:
       "A nonprofit-style reference for mission, services, and community impact.",
-    embeddable: false,
+    embeddable: true,
+    screenshot: "/images/previews/safe-haven.jpg",
   },
   {
     title: "Mable's Home",
@@ -103,6 +114,7 @@ export const projects: Project[] = [
     category: "Business",
     owner: "Reference / Inspiration",
     description: "A warm business website reference with a customer-friendly feel.",
-    embeddable: false,
+    embeddable: true,
+    screenshot: "/images/previews/mables-home.jpg",
   },
 ];
