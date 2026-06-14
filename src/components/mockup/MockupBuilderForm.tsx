@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { projects } from "../../data/projects";
+import { estimateFromMockup } from "../../data/estimatorLogic";
 import { getServiceById } from "../../data/services";
 import { submitNetlifyForm } from "../../utils/netlifyForms";
 import { Field, inputCls } from "../forms/FormField";
@@ -52,6 +53,7 @@ export default function MockupBuilderForm() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [draftMessage, setDraftMessage] = useState("");
 
   const set = <K extends keyof MockupRequest>(key: K, value: MockupRequest[K]) =>
     setForm((f) => ({ ...f, [key]: value }));
@@ -61,6 +63,35 @@ export default function MockupBuilderForm() {
       ...f,
       [key]: f[key].includes(v) ? f[key].filter((x) => x !== v) : [...f[key], v],
     }));
+
+  function saveDraft() {
+    try {
+      localStorage.setItem("lemonmade-mockup-request", JSON.stringify(form));
+      setDraftMessage("Draft saved on this device.");
+    } catch {
+      setDraftMessage("This browser could not save the draft.");
+    }
+  }
+
+  function resetForm() {
+    const resetValue: MockupRequest = {
+      ...emptyMockup,
+      pages: [...emptyMockup.pages],
+      features: [...emptyMockup.features],
+      inspiration: params.get("inspiration") || "",
+      description: selectedService ? `Service direction: ${selectedService.title}\n\n` : "",
+    };
+    setForm(resetValue);
+    setErrors({});
+    setSubmitted(false);
+    setSent(false);
+    setDraftMessage("Draft reset.");
+    try {
+      localStorage.removeItem("lemonmade-mockup-request");
+    } catch {
+      /* storage unavailable */
+    }
+  }
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -90,6 +121,7 @@ export default function MockupBuilderForm() {
 
   async function send() {
     setSending(true);
+    const estimate = estimateFromMockup(form);
     const ok = await submitNetlifyForm("mockup-builder", {
       businessName: form.businessName,
       businessType: form.businessType,
@@ -104,6 +136,8 @@ export default function MockupBuilderForm() {
       contactName: form.contactName,
       email: form.email,
       phone: form.phone,
+      estimatedRange: estimate.estimatedRange,
+      suggestedPackage: estimate.suggestedPackage,
     });
     setSending(false);
     setSent(ok);
@@ -197,7 +231,16 @@ export default function MockupBuilderForm() {
         </Field>
       </div>
 
-      <Button type="submit" shine className="w-full sm:w-auto">Build My Mockup Summary</Button>
+      <div className="flex flex-wrap gap-3">
+        <Button type="submit" shine className="w-full sm:w-auto">Build My Mockup Summary</Button>
+        <Button onClick={saveDraft} variant="secondary">Save Draft Locally</Button>
+        <Button onClick={resetForm} variant="ghost">Reset</Button>
+      </div>
+      {draftMessage && (
+        <p role="status" aria-live="polite" className="text-sm text-cream/65">
+          {draftMessage}
+        </p>
+      )}
     </form>
     <MockupLivePreview request={form} />
     </div>

@@ -12,7 +12,7 @@ export default function MockupBuilder() {
       <SectionHeading
         eyebrow="Mockup builder"
         title="Design Your Dream Site in 2 Minutes."
-        subtitle="Pick your pages, style, and features. We'll turn your answers into a real mockup concept — free, no commitment."
+        subtitle="Pick your pages, style, and features. Build a clear concept, review the starter range, then request your project quote."
         headingLevel="h1"
       />
       <MockupBuilderForm />

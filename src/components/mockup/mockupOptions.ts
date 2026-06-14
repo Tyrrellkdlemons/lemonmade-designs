@@ -6,17 +6,20 @@ export const businessTypes = [
 
 export const styles = [
   "Clean", "Luxury", "Bold", "Fun", "Corporate", "Futuristic",
-  "Nonprofit", "Food/Dessert", "Portfolio",
+  "Nonprofit", "Food/Dessert", "Portfolio", "Real Estate", "Insurance",
+  "Education",
 ];
 
 export const pageOptions = [
   "Home", "About", "Services", "Shop", "Booking",
-  "Contact", "Gallery", "Blog", "Donations", "Events",
+  "Contact", "Gallery", "Blog", "Donations", "Events", "Portfolio", "FAQ",
 ];
 
 export const featureOptions = [
   "Contact form", "Booking", "Payments", "Domain help", "Logo help",
-  "SEO", "Website transfer", "Social media links", "Admin dashboard",
+  "SEO", "Website transfer", "Social media links", "Admin dashboard", "Store",
+  "Gallery", "Testimonials", "Blog", "Chatbot", "Newsletter", "File upload",
+  "Client portal",
 ];
 
 export const budgetOptions = ["Under $500", "$500–$1,500", "$1,500–$5,000", "$5,000+", "Not sure yet"];

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { estimateFromMockup } from "../../data/estimatorLogic";
 import type { MockupRequest } from "./mockupOptions";
 import Button from "../ui/Button";
 
@@ -11,6 +12,7 @@ interface Props {
 }
 
 function buildSummaryText(r: MockupRequest): string {
+  const estimate = estimateFromMockup(r);
   return [
     `Website Mockup Request — ${r.businessName || "My Business"}`,
     `Business type: ${r.businessType}`,
@@ -20,6 +22,8 @@ function buildSummaryText(r: MockupRequest): string {
     `Features: ${r.features.join(", ")}`,
     r.inspiration ? `Inspiration: ${r.inspiration}` : "",
     `Budget: ${r.budget} · Timeline: ${r.timeline}`,
+    `Suggested package: ${estimate.suggestedPackage}`,
+    `Estimated range: ${estimate.estimatedRange}`,
     r.description ? `Notes: ${r.description}` : "",
     `Contact: ${r.contactName} · ${r.email}${r.phone ? ` · ${r.phone}` : ""}`,
   ].filter(Boolean).join("\n");
@@ -28,6 +32,7 @@ function buildSummaryText(r: MockupRequest): string {
 export default function MockupSummaryCard({ request, sent, onSend, sending }: Props) {
   const [copied, setCopied] = useState(false);
   const reduce = useReducedMotion();
+  const estimate = estimateFromMockup(request);
 
   async function copy() {
     try {
@@ -57,6 +62,8 @@ export default function MockupSummaryCard({ request, sent, onSend, sending }: Pr
         <div><dt className="font-semibold text-cream/60">Style</dt><dd className="text-cream">{request.style}</dd></div>
         <div><dt className="font-semibold text-cream/60">Colors</dt><dd className="text-cream">{request.colors || "Designer's choice"}</dd></div>
         <div><dt className="font-semibold text-cream/60">Budget / Timeline</dt><dd className="text-cream">{request.budget} · {request.timeline}</dd></div>
+        <div><dt className="font-semibold text-cream/60">Suggested package</dt><dd className="text-cream">{estimate.suggestedPackage}</dd></div>
+        <div><dt className="font-semibold text-cream/60">Estimated range</dt><dd className="font-semibold text-lemon">{estimate.estimatedRange}</dd></div>
         <div className="sm:col-span-2"><dt className="font-semibold text-cream/60">Pages</dt><dd className="text-cream">{request.pages.join(" · ")}</dd></div>
         <div className="sm:col-span-2"><dt className="font-semibold text-cream/60">Features</dt><dd className="text-cream">{request.features.join(" · ")}</dd></div>
         {request.inspiration && (

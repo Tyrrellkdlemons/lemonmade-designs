@@ -20,7 +20,7 @@ export default function Services() {
         />
         <div className="mb-8 flex flex-wrap gap-2 text-xs font-bold uppercase tracking-wider text-cream/55">
           <span className="rounded-full border border-lemon/25 bg-lemon/5 px-3 py-1.5">20 working request flows</span>
-          <span className="rounded-full border border-electric/25 bg-electric/5 px-3 py-1.5">Free Netlify Forms</span>
+          <span className="rounded-full border border-electric/25 bg-electric/5 px-3 py-1.5">Protected request forms</span>
           <span className="rounded-full border border-leaf/25 bg-leaf/5 px-3 py-1.5">No paid API required</span>
         </div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

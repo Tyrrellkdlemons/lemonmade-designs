@@ -29,6 +29,14 @@ export default function ServiceCard({ service, index }: { service: Service; inde
       </div>
       <h3 className="font-display text-lg font-semibold text-cream">{service.title}</h3>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-cream/70">{service.shortDescription}</p>
+      <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold">
+        <span className="rounded-full border border-lemon/25 bg-lemon/10 px-3 py-1.5 text-lemon">
+          {service.startingPrice}
+        </span>
+        <span className="rounded-full border border-electric/25 bg-electric/10 px-3 py-1.5 text-electric-soft">
+          {service.timelineEstimate}
+        </span>
+      </div>
       <div className="mt-5 grid gap-2">
         <Link
           to={`/request/${service.id}`}
@@ -58,6 +66,12 @@ export default function ServiceCard({ service, index }: { service: Service; inde
           className="focus-ring rounded-full border border-white/15 px-4 py-2.5 text-center text-sm font-semibold text-cream/75 hover:border-lemon/45 hover:text-lemon"
         >
           Build Quick Mockup
+        </Link>
+        <Link
+          to={`/estimate?service=${encodeURIComponent(service.id)}`}
+          className="focus-ring rounded-full border border-lemon/35 bg-lemon/5 px-4 py-2.5 text-center text-sm font-semibold text-lemon hover:bg-lemon/10"
+        >
+          Get Estimate
         </Link>
       </div>
     </motion.div>

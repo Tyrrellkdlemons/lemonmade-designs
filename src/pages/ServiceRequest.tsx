@@ -35,6 +35,16 @@ export default function ServiceRequest() {
               <h1 className="mt-2 font-display text-4xl font-bold leading-tight text-cream">
                 {service.title}
               </h1>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-xl border border-lemon/25 bg-lemon/10 p-3">
+                  <p className="text-xs font-bold uppercase tracking-wider text-lemon">Estimated range</p>
+                  <p className="mt-1 font-display text-lg font-bold text-cream">{service.priceRange}</p>
+                </div>
+                <div className="rounded-xl border border-electric/25 bg-electric/10 p-3">
+                  <p className="text-xs font-bold uppercase tracking-wider text-electric-soft">Typical timeline</p>
+                  <p className="mt-1 font-display text-lg font-bold text-cream">{service.timelineEstimate}</p>
+                </div>
+              </div>
               <p className="mt-4 leading-relaxed text-cream/75">{service.fullDescription}</p>
             </div>
             <div className="space-y-6 p-7">
@@ -80,6 +90,9 @@ export default function ServiceRequest() {
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <Button to={`/mockup-builder?service=${encodeURIComponent(service.id)}`} shine>
               Build Mockup
+            </Button>
+            <Button to={`/estimate?service=${encodeURIComponent(service.id)}`} variant="secondary">
+              Get Estimate
             </Button>
             <Button to="/work" variant="secondary">View Work</Button>
             <Button to="/contact" variant="ghost">Contact LemonMade</Button>

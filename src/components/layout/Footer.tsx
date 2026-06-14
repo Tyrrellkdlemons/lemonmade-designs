@@ -9,12 +9,14 @@ const cols = [
       { to: "/process", label: "Our Process" },
       { to: "/work", label: "Our Work" },
       { to: "/pricing", label: "Pricing" },
+      { to: "/lead-workflow", label: "Project Workflow" },
     ],
   },
   {
     title: "Services",
     links: [
       { to: "/services", label: "All Services" },
+      { to: "/estimate", label: "Get an Estimate" },
       { to: "/mockup-builder", label: "Build a Mockup" },
       { to: "/domain-help", label: "Domain Help" },
       { to: "/contact", label: "Request a Redesign" },
@@ -27,7 +29,7 @@ const cols = [
       { to: "/contact?type=transfer", label: "Transfer My Website" },
       { to: "/contact?type=manage", label: "Manage My Website" },
       { to: "/contact?type=domain", label: "Connect My Domain" },
-      { to: "/website-audit", label: "Free Website Audit" },
+      { to: "/website-audit", label: "Starter Website Review" },
     ],
   },
 ];

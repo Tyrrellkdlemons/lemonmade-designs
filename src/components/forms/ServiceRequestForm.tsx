@@ -107,6 +107,7 @@ export default function ServiceRequestForm({ service }: { service: Service }) {
       serviceId: service.id,
       serviceTitle: service.title,
       sourcePage: `/request/${service.id}`,
+      estimatedRange: service.priceRange,
     });
     setStatus(ok ? "success" : "error");
   }
@@ -218,6 +219,7 @@ export default function ServiceRequestForm({ service }: { service: Service }) {
       <input type="hidden" name="serviceId" value={service.id} />
       <input type="hidden" name="serviceTitle" value={service.title} />
       <input type="hidden" name="sourcePage" value={`/request/${service.id}`} />
+      <input type="hidden" name="estimatedRange" value={service.priceRange} />
       <p hidden aria-hidden="true">
         <label>
           Don't fill this out:

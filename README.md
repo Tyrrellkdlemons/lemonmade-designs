@@ -12,11 +12,13 @@
 |---|---|
 | `/` | Full-viewport brand hero, featured work, and capability shortcuts |
 | `/work` | Live iframe previews with device toggles, category filters, and blocked-embed fallbacks |
-| `/services` | 20 data-driven services with request, example, and mockup actions |
-| `/request/:serviceId` | Service details plus a conditional Netlify request form |
-| `/mockup-builder` | Live website preview, copyable brief, and Netlify submission |
+| `/services` | 20 data-driven services with request, example, mockup, and estimate actions |
+| `/request/:serviceId` | Service pricing, timeline, details, and a conditional Netlify request form |
+| `/mockup-builder` | Live website preview, local draft controls, estimated range, copyable brief, and Netlify submission |
 | `/domain-help` | Public RDAP lookup, manual-help fallback, and domain request form |
-| `/website-audit` | Free client-side audit checklist and review request |
+| `/website-audit` | Starter website review with ten transparent checklist areas |
+| `/estimate` | Client-side quote estimator with service prefill and Netlify submission |
+| `/lead-workflow` | Linked Services → Request → Mockup → Estimate → Submit → Follow-up journey |
 | `/pricing` | 4 packages (Fresh Start, Business Made, LemonPro, Custom Build) + FAQ |
 | `/process` | Animated 7-step timeline |
 | `/about` | Father-and-son story |
@@ -59,7 +61,7 @@ background.
 1. Push this repo to GitHub (see scripts below).
 2. In Netlify: *Add new project → Import an existing project* → pick the repo.
 3. Build command: `npm run build` · Publish directory: `dist` (already in `netlify.toml`).
-4. Deploy. All seven Netlify Forms are detected from `public/__forms.html`, and the RDAP helper is deployed from `netlify/functions/`.
+4. Deploy. All eight Netlify Forms are detected from `public/__forms.html`, and the RDAP helper is deployed from `netlify/functions/`.
 
 **Option B — Netlify CLI:**
 ```bash
@@ -80,7 +82,7 @@ All scripts pause before closing.
 ```
 brand/source                  untouched original and approved transparent masters
 public/logo, public/og        optimized public brand assets
-src/data/                     projects, services, pricing, faqs (data-driven)
+src/data/                     projects, services, estimator logic, pricing, faqs
 src/components/layout/        Navbar, Footer, Layout (page transitions, skip link)
 src/components/animations/    background, reveal, cursor, badge, and scroll-progress motion
 src/components/ui/            Button, Hero, ServiceCard, PricingCard, CTASection, FAQAccordion, ProcessTimeline, DomainHelpPanel, LogoMark, SectionHeading
@@ -98,28 +100,62 @@ src/utils/                    netlifyForms, usePageMeta
 `src/data/serviceFormFields.ts` maps that type to the extra questions shown by
 `ServiceRequestForm`.
 
-All requests include the service ID, service title, source page, contact
-information, timing, budget, message, and honeypot. Website redesigns submit to
+All requests include the service ID, service title, source page, visible
+estimated range, contact information, timing, budget, message, and honeypot.
+Website redesigns submit to
 `redesign-request`; management and maintenance submit to `management-request`;
 other services submit to `service-request`.
+
+## Eight Netlify Forms
+
+`public/__forms.html` statically registers:
+
+- `start-project`
+- `service-request`
+- `mockup-builder`
+- `domain-help`
+- `website-audit`
+- `redesign-request`
+- `management-request`
+- `project-estimate`
+
+The React pages post URL-encoded data to `/__forms.html`. Every submitted field
+must also appear in the matching static form blueprint or Netlify may omit it.
 
 ## View submissions in Netlify
 
 1. Open the `lemonmade-designs` project in Netlify.
 2. Open **Forms**.
 3. Select `start-project`, `service-request`, `mockup-builder`, `domain-help`,
-   `website-audit`, `redesign-request`, or `management-request`.
-4. Configure private email notifications under **Project configuration >
-   Notifications > Form submission notifications**.
+   `website-audit`, `redesign-request`, `management-request`, or
+   `project-estimate`.
+
+## Enable form notifications
+
+In Netlify, open **Project configuration > Notifications > Form submission
+notifications**. Add the private business email and select all eight forms.
+Notifications are a dashboard setting so the recipient address never enters the
+public repository.
 
 ## Add a new service
 
-1. Add one object to `src/data/services.ts` with a unique URL-safe `id`.
+1. Add one object to `src/data/services.ts` with a unique URL-safe `id`,
+   starting price, price range, and timeline estimate.
 2. Reuse an existing `formType`, or add a typed field group in
    `src/data/serviceFormFields.ts`.
 3. If new submitted field names were added, register them in the matching form
    inside `public/__forms.html`.
 4. Run `npm test`, `npm run lint`, and `npm run build`.
+
+## Add form fields safely
+
+1. Add the controlled field to the React form and include it in the
+   `submitNetlifyForm` payload.
+2. Add the same field name and compatible input type to that form in
+   `public/__forms.html`.
+3. Run `npm test` and `npm run build`.
+4. Deploy and confirm the field appears under **Forms** before accepting live
+   customer data.
 
 ## Test locally
 
@@ -127,14 +163,18 @@ Use `npm run dev` for UI work. Use `npx netlify dev` when testing Netlify Forms
 or `/.netlify/functions/rdap-domain`, because the plain Vite server does not
 emulate Netlify Functions.
 
-## Free limitations
+## Current operating limits
 
 - RDAP reports public registration records; it cannot guarantee that a domain
   is purchasable or quote registrar pricing.
 - Netlify Forms and Functions are subject to the active Netlify plan limits.
-- The website audit is a guided request checklist, not a remote automated scan.
+- The website review is a guided human-review request, not a remote automated scan.
 - Mockup previews are visual planning aids, not generated production websites.
+- The estimator is a transparent starter range, not a final invoice.
 - No payment, email automation, booking API, or AI API is enabled by default.
+- n8n is not needed for the current direct Netlify submission workflow. Add it
+  only after choosing a CRM, email, task, or SMS system that requires branching,
+  retries, and multi-system follow-up.
 
 ## Future paid upgrades
 
@@ -149,7 +189,7 @@ emulate Netlify Functions.
 
 - **Iframes:** lazy-loaded via IntersectionObserver; sites that block embedding (`X-Frame-Options`/CSP) show Claude's saved screenshot plus live-site and similar-site actions.
 - **Reduced motion:** all animations soften/disable under `prefers-reduced-motion`.
-- **Forms:** seven Netlify Forms with honeypots, client validation, accessible errors, first-error focus, and duplicate-submit protection.
+- **Forms:** eight Netlify Forms with honeypots, client validation, accessible errors, first-error focus, and duplicate-submit protection.
 - **Domains:** public RDAP lookup uses no API key and never presents LemonMade as a registrar.
 - **No credentials** are stored anywhere in this repo.
 - **Integrations:** current service status and optional API setup are documented in `docs/INTEGRATIONS.md`.

@@ -5,14 +5,27 @@ import Button from "../ui/Button";
 import { Field, inputCls } from "./FormField";
 
 const serviceOptions = ["Speed", "Mobile", "Design", "SEO", "Domain", "Forms", "Not sure"];
+const businessTypes = [
+  "Local business",
+  "Professional services",
+  "Restaurant / Food",
+  "E-commerce",
+  "Nonprofit",
+  "Portfolio / Creative",
+  "Education / Program",
+  "Other",
+];
 const auditChecklist = [
-  "Mobile layout",
+  "Mobile",
   "Speed",
-  "SEO basics",
-  "Domain/SSL",
+  "SEO",
+  "SSL/domain",
   "Contact forms",
   "Brand clarity",
   "CTA clarity",
+  "Accessibility",
+  "Content structure",
+  "Trust signals",
 ];
 
 function isValidUrl(value: string): boolean {
@@ -23,6 +36,7 @@ export default function WebsiteAuditForm() {
   const reduce = useReducedMotion();
   const [form, setForm] = useState({
     websiteUrl: "",
+    businessType: businessTypes[0],
     mainIssue: "",
     serviceNeeded: serviceOptions[0],
     notes: "",
@@ -31,10 +45,17 @@ export default function WebsiteAuditForm() {
     phone: "",
     "bot-field": "",
   });
+  const [areaConcerns, setAreaConcerns] = useState<string[]>([]);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   const set = (key: string, value: string) => setForm((current) => ({ ...current, [key]: value }));
+  const toggleConcern = (concern: string) =>
+    setAreaConcerns((current) =>
+      current.includes(concern)
+        ? current.filter((value) => value !== concern)
+        : [...current, concern]
+    );
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -55,7 +76,10 @@ export default function WebsiteAuditForm() {
     }
 
     setStatus("sending");
-    const ok = await submitNetlifyForm("website-audit", form);
+    const ok = await submitNetlifyForm("website-audit", {
+      ...form,
+      areaConcerns: areaConcerns.join(", "),
+    });
     setStatus(ok ? "success" : "error");
   }
 
@@ -63,10 +87,11 @@ export default function WebsiteAuditForm() {
     return (
       <div role="status" className="glass p-9 text-center">
         <span aria-hidden="true" className="text-5xl">🔎</span>
-        <h2 className="mt-4 font-display text-3xl font-bold text-cream">Audit request received.</h2>
+        <h2 className="mt-4 font-display text-3xl font-bold text-cream">Review request received.</h2>
         <p className="mx-auto mt-3 max-w-lg text-cream/70">
-          We'll review the site and reply with a practical starting point. This
-          free request does not run a paid automated scanner.
+          We'll review the site and reply with a practical starting point and
+          quote options for fixes. This prepares a human review and does not run
+          an automated scanner.
         </p>
       </div>
     );
@@ -100,6 +125,17 @@ export default function WebsiteAuditForm() {
             placeholder="https://yourwebsite.com"
           />
         </Field>
+        <Field label="Business type" htmlFor="audit-businessType">
+          <select
+            id="audit-businessType"
+            name="businessType"
+            className={inputCls}
+            value={form.businessType}
+            onChange={(event) => set("businessType", event.target.value)}
+          >
+            {businessTypes.map((option) => <option key={option}>{option}</option>)}
+          </select>
+        </Field>
         <Field label="Main issue" htmlFor="audit-mainIssue" required error={errors.mainIssue}>
           <textarea
             id="audit-mainIssue"
@@ -115,6 +151,36 @@ export default function WebsiteAuditForm() {
             {serviceOptions.map((option) => <option key={option}>{option}</option>)}
           </select>
         </Field>
+        <fieldset>
+          <legend className="mb-2 text-sm font-semibold text-cream/90">
+            Area concerns
+          </legend>
+          <div className="flex flex-wrap gap-2">
+            {auditChecklist.map((concern) => {
+              const checked = areaConcerns.includes(concern);
+              return (
+                <label
+                  key={concern}
+                  className={`focus-within:ring-2 focus-within:ring-lemon rounded-full border px-4 py-2 text-sm font-medium ${
+                    checked
+                      ? "border-lemon bg-lemon/15 text-lemon"
+                      : "border-white/15 text-cream/70"
+                  }`}
+                >
+                  <input
+                    type="checkbox"
+                    name="areaConcerns"
+                    value={concern}
+                    checked={checked}
+                    onChange={() => toggleConcern(concern)}
+                    className="sr-only"
+                  />
+                  {concern}
+                </label>
+              );
+            })}
+          </div>
+        </fieldset>
         <Field label="Notes" htmlFor="audit-notes">
           <textarea id="audit-notes" rows={4} className={inputCls} value={form.notes} onChange={(event) => set("notes", event.target.value)} placeholder="Deadlines, target audience, current platform, or anything else." />
         </Field>
@@ -136,7 +202,7 @@ export default function WebsiteAuditForm() {
           </p>
         )}
         <Button type="submit" shine disabled={status === "sending"}>
-          {status === "sending" ? "Sending..." : "Request My Free Audit"}
+          {status === "sending" ? "Sending..." : "Request My Review"}
         </Button>
       </form>
 
@@ -146,7 +212,7 @@ export default function WebsiteAuditForm() {
         className="glass motion-surface p-6 sm:p-8 lg:sticky lg:top-24"
       >
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-electric-soft">
-          Client-side audit checklist
+          Client-side review checklist
         </p>
         <h2 className="mt-2 font-display text-2xl font-bold text-cream">
           What we'll review first
@@ -167,7 +233,11 @@ export default function WebsiteAuditForm() {
                 initial={reduce ? undefined : { opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.055 }}
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-cream/80"
+                className={`flex items-center gap-3 rounded-xl border px-4 py-3 text-sm font-semibold ${
+                  areaConcerns.includes(item)
+                    ? "border-lemon/35 bg-lemon/10 text-cream"
+                    : "border-white/10 bg-white/[0.03] text-cream/80"
+                }`}
               >
                 <span aria-hidden="true" className="flex h-7 w-7 items-center justify-center rounded-full bg-lemon/10 text-lemon">✓</span>
                 {item}

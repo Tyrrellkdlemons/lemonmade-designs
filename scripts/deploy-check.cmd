@@ -62,7 +62,8 @@ echo [5/5] Common issue checklist:
 echo   - Netlify build command should be: npm run build
 echo   - Netlify publish directory should be: dist
 echo   - SPA redirect is configured in netlify.toml
-echo   - Seven production forms are registered in public\__forms.html
+echo   - Eight production forms are registered in public\__forms.html
+echo   - project-estimate includes calculated range and package fields
 echo   - RDAP domain helper exists in netlify\functions\rdap-domain.mjs
 echo   - Every production commit has a matching entry in docs\DEPLOY-NOTES.md
 echo.

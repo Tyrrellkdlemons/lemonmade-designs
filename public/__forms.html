@@ -26,6 +26,7 @@
       <input type="text" name="serviceId" />
       <input type="text" name="serviceTitle" />
       <input type="text" name="sourcePage" />
+      <input type="text" name="estimatedRange" />
       <input type="text" name="name" />
       <input type="email" name="email" />
       <input type="tel" name="phone" />
@@ -119,6 +120,8 @@
       <input type="text" name="contactName" />
       <input type="email" name="email" />
       <input type="tel" name="phone" />
+      <input type="text" name="estimatedRange" />
+      <input type="text" name="suggestedPackage" />
       <input type="text" name="bot-field" />
     </form>
 
@@ -137,8 +140,10 @@
     <form name="website-audit" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
       <input type="hidden" name="form-name" value="website-audit" />
       <input type="url" name="websiteUrl" />
+      <input type="text" name="businessType" />
       <textarea name="mainIssue"></textarea>
       <input type="text" name="serviceNeeded" />
+      <input type="text" name="areaConcerns" />
       <textarea name="notes"></textarea>
       <input type="text" name="name" />
       <input type="email" name="email" />
@@ -151,6 +156,7 @@
       <input type="text" name="serviceId" />
       <input type="text" name="serviceTitle" />
       <input type="text" name="sourcePage" />
+      <input type="text" name="estimatedRange" />
       <input type="text" name="name" />
       <input type="email" name="email" />
       <input type="tel" name="phone" />
@@ -173,6 +179,7 @@
       <input type="text" name="serviceId" />
       <input type="text" name="serviceTitle" />
       <input type="text" name="sourcePage" />
+      <input type="text" name="estimatedRange" />
       <input type="text" name="name" />
       <input type="email" name="email" />
       <input type="tel" name="phone" />
@@ -187,6 +194,31 @@
       <input type="text" name="seoUpdates" />
       <input type="text" name="contentUpdates" />
       <input type="text" name="analyticsReporting" />
+      <input type="text" name="bot-field" />
+    </form>
+
+    <form name="project-estimate" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="project-estimate" />
+      <input type="text" name="sourceServiceId" />
+      <input type="text" name="serviceType" />
+      <input type="number" name="pages" />
+      <input type="text" name="designComplexity" />
+      <input type="text" name="features" />
+      <input type="text" name="timelineUrgency" />
+      <input type="text" name="ecommerce" />
+      <input type="text" name="advancedAnimations" />
+      <input type="text" name="bookingPayment" />
+      <input type="text" name="domainHelp" />
+      <input type="text" name="redesign" />
+      <input type="text" name="monthlyManagement" />
+      <input type="text" name="estimatedRange" />
+      <input type="text" name="suggestedPackage" />
+      <input type="text" name="estimatedTimeline" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="businessName" />
+      <textarea name="message"></textarea>
       <input type="text" name="bot-field" />
     </form>
   </body>

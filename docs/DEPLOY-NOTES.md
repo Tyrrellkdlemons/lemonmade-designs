@@ -15,6 +15,22 @@ Format:
 
 ---
 
+## 2026-06-14 — feat: complete quote estimator workflow
+- Added service starting prices, project ranges, and timeline estimates across
+  all 20 service records, cards, and request pages.
+- Added `/estimate` with deterministic client-side pricing, service query
+  prefill, copy support, Netlify submission, and the required pricing disclaimer.
+- Added `/lead-workflow`, expanded mockup options and local draft controls, and
+  upgraded the website audit into a quote-based Starter Website Review.
+- Added the eighth Netlify Form, `project-estimate`, and registered every new
+  service, mockup, estimate, and website-review payload field.
+- Kept the workflow free to operate with static data, localStorage, Netlify
+  Forms, and RDAP. n8n is intentionally deferred until a real CRM/email/task
+  orchestration requirement exists.
+- Verify after deploy: eight forms registered, estimate query prefill and math,
+  mockup save/reset, ten review categories, workflow links, responsive layouts,
+  and the existing RDAP and portfolio fallbacks.
+
 ## 2026-06-12 — feat: launch free service request platform
 - Preserved Claude's real portfolio preview release on the remote
   `checkpoint/claude-ebf2fd5` branch before beginning this platform work.

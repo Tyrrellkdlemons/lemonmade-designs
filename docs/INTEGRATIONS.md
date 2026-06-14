@@ -3,12 +3,12 @@
 ## Working now
 
 - GitHub-connected Netlify production deploys.
-- Seven Netlify Forms covering contact, service, mockup, domain, audit, redesign,
-  and management requests.
+- Eight Netlify Forms covering contact, service, mockup, domain, website review,
+  redesign, management, and project estimate requests.
 - Public domain registration lookups through the credential-free RDAP Netlify
   Function.
 - Contact and service links prefill the correct project request.
-- Mockup summaries are generated in the browser and can be submitted.
+- Mockup summaries and project estimates are generated in the browser and can be submitted.
 - Portfolio filters, device previews, live-site links, and embed fallbacks.
 - Responsive navigation, motion, custom pointer, scroll progress, and reduced-motion support.
 
@@ -22,8 +22,26 @@ Netlify stores submissions already. To receive email alerts, open:
 
 `Project configuration > Notifications > Form submission notifications`
 
-Choose the destination email and select all three forms. This is intentionally a
+Choose the destination email and select all eight forms. This is intentionally a
 dashboard choice because the recipient is private business information.
+
+### Add form fields safely
+
+Every key sent through `submitNetlifyForm` must also exist in the matching
+static form inside `public/__forms.html`. Add both sides in the same commit, run
+`npm test` and `npm run build`, then verify the field in the Netlify Forms
+dashboard after deployment.
+
+### n8n workflow decision
+
+n8n is not required for the current architecture. Each customer action posts
+directly to one Netlify Form, and LemonMade handles personal follow-up. Adding an
+automation server now would introduce credentials, hosting, monitoring, and
+failure recovery without a defined destination system.
+
+Use n8n later when a specific CRM, email platform, task board, or SMS provider is
+selected and the workflow needs branching, retries, deduplication, or synchronized
+status across multiple systems.
 
 ### Web analytics
 
@@ -51,6 +69,7 @@ Never expose them in Vite variables or browser code.
 3. Add Resend for automatic confirmations.
 4. Add Stripe only after package prices, refund terms, and fulfillment rules are final.
 5. Add Name.com or OpenAI only when their exact user flows and usage limits are approved.
+6. Add n8n only after at least two destination systems and a documented retry policy exist.
 
 ## Operational checks
 

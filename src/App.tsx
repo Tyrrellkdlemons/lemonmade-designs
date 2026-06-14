@@ -12,6 +12,8 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import ServiceRequest from "./pages/ServiceRequest";
 import WebsiteAudit from "./pages/WebsiteAudit";
+import Estimate from "./pages/Estimate";
+import LeadWorkflow from "./pages/LeadWorkflow";
 
 export default function App() {
   return (
@@ -26,6 +28,8 @@ export default function App() {
         <Route path="/domain-help" element={<Domains />} />
         <Route path="/domains" element={<Domains />} />
         <Route path="/website-audit" element={<WebsiteAudit />} />
+        <Route path="/estimate" element={<Estimate />} />
+        <Route path="/lead-workflow" element={<LeadWorkflow />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/process" element={<Process />} />
         <Route path="/about" element={<About />} />

@@ -14,7 +14,7 @@ const capabilities = [
   { icon: "🍋", label: "Custom builds", to: "/services" },
   { icon: "🌐", label: "Domains & DNS", to: "/domains" },
   { icon: "✨", label: "Redesigns", to: "/contact?type=redesign" },
-  { icon: "🖼️", label: "Free mockups", to: "/mockup" },
+  { icon: "🖼️", label: "Project mockups", to: "/mockup" },
   { icon: "🚀", label: "Hosting & launch", to: "/process" },
   { icon: "🧭", label: "Site management", to: "/contact?type=manage" },
 ];
