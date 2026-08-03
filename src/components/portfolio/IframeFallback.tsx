@@ -33,13 +33,13 @@ export default function IframeFallback({ project }: { project: Project }) {
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="focus-ring rounded-full bg-lemon px-5 py-2 text-sm font-bold text-navy shadow-glow"
+            className="focus-ring inline-flex min-h-[38px] items-center rounded-full bg-lemon px-5 py-2 text-sm font-bold text-navy shadow-glow"
           >
             Open Live Site ↗
           </a>
           <Link
             to={`/mockup-builder?inspiration=${encodeURIComponent(project.title)}`}
-            className="focus-ring rounded-full border border-electric bg-navy/70 px-5 py-2 text-sm font-semibold text-electric-soft backdrop-blur-sm hover:bg-electric/15"
+            className="focus-ring inline-flex min-h-[38px] items-center rounded-full border border-electric bg-navy/70 px-5 py-2 text-sm font-semibold text-electric-soft backdrop-blur-sm hover:bg-electric/15"
           >
             Request Similar Site
           </Link>

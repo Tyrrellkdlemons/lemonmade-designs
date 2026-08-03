@@ -50,10 +50,13 @@ export default function Footer() {
           {cols.map((col) => (
             <nav key={col.title} aria-label={col.title}>
               <h3 className="font-display text-sm font-bold uppercase tracking-wider text-cream/90">{col.title}</h3>
-              <ul className="mt-4 space-y-2.5">
+              <ul className="mt-2 space-y-0.5">
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    <Link to={l.to} className="focus-ring rounded text-sm text-cream/60 transition-colors hover:text-lemon">
+                    <Link
+                      to={l.to}
+                      className="focus-ring inline-flex min-h-[38px] items-center rounded text-sm text-cream/60 transition-colors hover:text-lemon"
+                    >
                       {l.label}
                     </Link>
                   </li>

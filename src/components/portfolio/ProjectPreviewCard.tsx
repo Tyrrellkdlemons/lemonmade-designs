@@ -34,13 +34,13 @@ export default function ProjectPreviewCard({ project, index }: { project: Projec
           href={project.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="focus-ring rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-cream hover:border-lemon/60 hover:text-lemon"
+          className="focus-ring inline-flex min-h-[38px] items-center rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-cream hover:border-lemon/60 hover:text-lemon"
         >
           Open Live Site ↗
         </a>
         <Link
           to={`/mockup-builder?inspiration=${encodeURIComponent(project.title)}`}
-          className="focus-ring rounded-full bg-lemon/10 px-4 py-2 text-sm font-semibold text-lemon hover:bg-lemon/20"
+          className="focus-ring inline-flex min-h-[38px] items-center rounded-full bg-lemon/10 px-4 py-2 text-sm font-semibold text-lemon hover:bg-lemon/20"
         >
           Request Similar Site
         </Link>

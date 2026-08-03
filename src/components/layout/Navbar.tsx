@@ -41,7 +41,7 @@ export default function Navbar() {
               <NavLink
                 to={l.to}
                 className={({ isActive }) =>
-                  `focus-ring relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
+                  `focus-ring relative inline-flex min-h-[38px] items-center rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
                     isActive ? "text-lemon" : "text-cream/80 hover:text-cream"
                   }`
                 }

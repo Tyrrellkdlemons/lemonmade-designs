@@ -20,7 +20,7 @@ export default function DevicePreviewToggle({ value, onChange }: Props) {
           type="button"
           onClick={() => onChange(d.id)}
           aria-pressed={value === d.id}
-          className={`focus-ring rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+          className={`focus-ring inline-flex min-h-[38px] items-center rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
             value === d.id ? "bg-lemon text-navy" : "text-cream/70 hover:text-cream"
           }`}
         >
